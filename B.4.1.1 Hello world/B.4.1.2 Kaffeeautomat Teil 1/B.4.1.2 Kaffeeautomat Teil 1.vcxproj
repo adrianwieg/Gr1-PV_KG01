@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{8f17f87a-f05d-4dfd-bdc2-ac037874a3d4}</ProjectGuid>
-    <RootNamespace>B411Helloworld</RootNamespace>
+    <ProjectGuid>{5a31b8f2-9f6b-43b0-b1d6-2be858b0b84e}</ProjectGuid>
+    <RootNamespace>B412KaffeeautomatTeil1</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -139,7 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="B.4.1.1 Hello world.cpp" />
+    <ClCompile Include="B.4.1.2 Kaffeeautomat Teil 1.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
