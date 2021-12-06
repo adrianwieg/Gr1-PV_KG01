@@ -1,0 +1,29 @@
+B.4.1.5 Variablennamen
+1.) variablenname
+funktioniert da "variablenname" kein Keyword ist
+
+2.) 2be_or_not_to_be
+funktioniert nicht, da der erste Char eine Zahl ist
+
+3.) vorname.nachname 
+funktioniert nicht, da ein Punkt im Namen ist
+
+4.) _system
+funktioniert, da _ den Kontext verändert
+
+5.) #hashtag 
+funktioniert nicht, da das # anderweitig genutzt wird (z.B. #include ...)
+
+6.) SiebenMeilenStiefel
+funktioniert, da der Variablenname ein normaler String ohne Zeichen ist
+
+
+B.4.1.6 Datentypen
+1.) Gleitpunktzahlen = float
+2.) Ganze Zahlen = int
+3.) Zeichen = char
+4.) Strings = string 
+5.) Boolsche Werte = bool
+6.) Natürliche Zahlen = unsigned int (auch unsigned short int möglich)
+
+

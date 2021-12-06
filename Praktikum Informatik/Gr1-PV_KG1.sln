@@ -7,6 +7,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "B.4.1.1 Hello world", "B.4.
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "B.4.1.2 Kaffeeautomat Teil 1", "B.4.1.2 Kaffeeautomat Teil 1\B.4.1.2 Kaffeeautomat Teil 1.vcxproj", "{5A31B8F2-9F6B-43B0-B1D6-2BE858B0B84E}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "B.4.1.5 Variablennamen", "B.4.1.5 Variablennamen\B.4.1.5 Variablennamen.vcxproj", "{613407E9-1966-4483-86C1-359F834D9F19}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "B.4.1.7 Standardeingabe", "B.4.1.7 Standardeingabe\B.4.1.7 Standardeingabe.vcxproj", "{BCF9B2D1-3FF0-4150-B078-49B7F71811AC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +35,22 @@ Global
 		{5A31B8F2-9F6B-43B0-B1D6-2BE858B0B84E}.Release|x64.Build.0 = Release|x64
 		{5A31B8F2-9F6B-43B0-B1D6-2BE858B0B84E}.Release|x86.ActiveCfg = Release|Win32
 		{5A31B8F2-9F6B-43B0-B1D6-2BE858B0B84E}.Release|x86.Build.0 = Release|Win32
+		{613407E9-1966-4483-86C1-359F834D9F19}.Debug|x64.ActiveCfg = Debug|x64
+		{613407E9-1966-4483-86C1-359F834D9F19}.Debug|x64.Build.0 = Debug|x64
+		{613407E9-1966-4483-86C1-359F834D9F19}.Debug|x86.ActiveCfg = Debug|Win32
+		{613407E9-1966-4483-86C1-359F834D9F19}.Debug|x86.Build.0 = Debug|Win32
+		{613407E9-1966-4483-86C1-359F834D9F19}.Release|x64.ActiveCfg = Release|x64
+		{613407E9-1966-4483-86C1-359F834D9F19}.Release|x64.Build.0 = Release|x64
+		{613407E9-1966-4483-86C1-359F834D9F19}.Release|x86.ActiveCfg = Release|Win32
+		{613407E9-1966-4483-86C1-359F834D9F19}.Release|x86.Build.0 = Release|Win32
+		{BCF9B2D1-3FF0-4150-B078-49B7F71811AC}.Debug|x64.ActiveCfg = Debug|x64
+		{BCF9B2D1-3FF0-4150-B078-49B7F71811AC}.Debug|x64.Build.0 = Debug|x64
+		{BCF9B2D1-3FF0-4150-B078-49B7F71811AC}.Debug|x86.ActiveCfg = Debug|Win32
+		{BCF9B2D1-3FF0-4150-B078-49B7F71811AC}.Debug|x86.Build.0 = Debug|Win32
+		{BCF9B2D1-3FF0-4150-B078-49B7F71811AC}.Release|x64.ActiveCfg = Release|x64
+		{BCF9B2D1-3FF0-4150-B078-49B7F71811AC}.Release|x64.Build.0 = Release|x64
+		{BCF9B2D1-3FF0-4150-B078-49B7F71811AC}.Release|x86.ActiveCfg = Release|Win32
+		{BCF9B2D1-3FF0-4150-B078-49B7F71811AC}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
