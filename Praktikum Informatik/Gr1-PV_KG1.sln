@@ -13,6 +13,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "B.4.1.7 Standardeingabe", "
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "B.4.1.8 Typumwandlung", "B.4.18 Typumwandlung\B.4.18 Typumwandlung.vcxproj", "{20E9B62A-E4D1-4E2B-8889-C433F0590E83}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "B.4.2.1 Gebrauch verschiedener Operatoren", "B.4.2.1 Gebrauch verschiedener Operatoren\B.4.2.1 Gebrauch verschiedener Operatoren.vcxproj", "{F632CCED-570C-4035-8424-DF9675129648}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -61,6 +63,14 @@ Global
 		{20E9B62A-E4D1-4E2B-8889-C433F0590E83}.Release|x64.Build.0 = Release|x64
 		{20E9B62A-E4D1-4E2B-8889-C433F0590E83}.Release|x86.ActiveCfg = Release|Win32
 		{20E9B62A-E4D1-4E2B-8889-C433F0590E83}.Release|x86.Build.0 = Release|Win32
+		{F632CCED-570C-4035-8424-DF9675129648}.Debug|x64.ActiveCfg = Debug|x64
+		{F632CCED-570C-4035-8424-DF9675129648}.Debug|x64.Build.0 = Debug|x64
+		{F632CCED-570C-4035-8424-DF9675129648}.Debug|x86.ActiveCfg = Debug|Win32
+		{F632CCED-570C-4035-8424-DF9675129648}.Debug|x86.Build.0 = Debug|Win32
+		{F632CCED-570C-4035-8424-DF9675129648}.Release|x64.ActiveCfg = Release|x64
+		{F632CCED-570C-4035-8424-DF9675129648}.Release|x64.Build.0 = Release|x64
+		{F632CCED-570C-4035-8424-DF9675129648}.Release|x86.ActiveCfg = Release|Win32
+		{F632CCED-570C-4035-8424-DF9675129648}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
