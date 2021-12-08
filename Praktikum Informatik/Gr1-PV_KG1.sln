@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.31911.196
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "B.4.1.1 Hello world", "B.4.1.1 Hello world\B.4.1.1 Hello world.vcxproj", "{8F17F87A-F05D-4DFD-BDC2-AC037874A3D4}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "B.4.1.5 Variablennamen", "B.4.1.5 Variablennamen\B.4.1.5 Variablennamen.vcxproj", "{613407E9-1966-4483-86C1-359F834D9F19}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "B.4.1.7 Standardeingabe", "B.4.1.7 Standardeingabe\B.4.1.7 Standardeingabe.vcxproj", "{BCF9B2D1-3FF0-4150-B078-49B7F71811AC}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "B.4.1.8 Typumwandlung", "B.4.18 Typumwandlung\B.4.18 Typumwandlung.vcxproj", "{20E9B62A-E4D1-4E2B-8889-C433F0590E83}"
@@ -33,14 +31,6 @@ Global
 		{8F17F87A-F05D-4DFD-BDC2-AC037874A3D4}.Release|x64.Build.0 = Release|x64
 		{8F17F87A-F05D-4DFD-BDC2-AC037874A3D4}.Release|x86.ActiveCfg = Release|Win32
 		{8F17F87A-F05D-4DFD-BDC2-AC037874A3D4}.Release|x86.Build.0 = Release|Win32
-		{613407E9-1966-4483-86C1-359F834D9F19}.Debug|x64.ActiveCfg = Debug|x64
-		{613407E9-1966-4483-86C1-359F834D9F19}.Debug|x64.Build.0 = Debug|x64
-		{613407E9-1966-4483-86C1-359F834D9F19}.Debug|x86.ActiveCfg = Debug|Win32
-		{613407E9-1966-4483-86C1-359F834D9F19}.Debug|x86.Build.0 = Debug|Win32
-		{613407E9-1966-4483-86C1-359F834D9F19}.Release|x64.ActiveCfg = Release|x64
-		{613407E9-1966-4483-86C1-359F834D9F19}.Release|x64.Build.0 = Release|x64
-		{613407E9-1966-4483-86C1-359F834D9F19}.Release|x86.ActiveCfg = Release|Win32
-		{613407E9-1966-4483-86C1-359F834D9F19}.Release|x86.Build.0 = Release|Win32
 		{BCF9B2D1-3FF0-4150-B078-49B7F71811AC}.Debug|x64.ActiveCfg = Debug|x64
 		{BCF9B2D1-3FF0-4150-B078-49B7F71811AC}.Debug|x64.Build.0 = Debug|x64
 		{BCF9B2D1-3FF0-4150-B078-49B7F71811AC}.Debug|x86.ActiveCfg = Debug|Win32
