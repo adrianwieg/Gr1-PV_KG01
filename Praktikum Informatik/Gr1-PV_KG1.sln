@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.31911.196
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "B.4.1.1 Hello world", "B.4.1.1 Hello world\B.4.1.1 Hello world.vcxproj", "{8F17F87A-F05D-4DFD-BDC2-AC037874A3D4}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "B.4.2.1 Gebrauch verschiedener Operatoren", "B.4.2.1 Gebrauch verschiedener Operatoren\B.4.2.1 Gebrauch verschiedener Operatoren.vcxproj", "{F632CCED-570C-4035-8424-DF9675129648}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "B.4.1.2_Kaffeeautomat_Teil_1", "B.4.1.2_Kaffeeautomat_Teil_1\B.4.1.2_Kaffeeautomat_Teil_1.vcxproj", "{286E0D35-CC7C-4D8B-86AB-DA3A42852628}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "B.4.1.5_Variablennamen", "B.4.1.5_Variablennamen\B.4.1.5_Variablennamen.vcxproj", "{F470610C-DAFE-4BA0-9923-E2AD8FE7A4E0}"
@@ -33,14 +31,6 @@ Global
 		{8F17F87A-F05D-4DFD-BDC2-AC037874A3D4}.Release|x64.Build.0 = Release|x64
 		{8F17F87A-F05D-4DFD-BDC2-AC037874A3D4}.Release|x86.ActiveCfg = Release|Win32
 		{8F17F87A-F05D-4DFD-BDC2-AC037874A3D4}.Release|x86.Build.0 = Release|Win32
-		{F632CCED-570C-4035-8424-DF9675129648}.Debug|x64.ActiveCfg = Debug|x64
-		{F632CCED-570C-4035-8424-DF9675129648}.Debug|x64.Build.0 = Debug|x64
-		{F632CCED-570C-4035-8424-DF9675129648}.Debug|x86.ActiveCfg = Debug|Win32
-		{F632CCED-570C-4035-8424-DF9675129648}.Debug|x86.Build.0 = Debug|Win32
-		{F632CCED-570C-4035-8424-DF9675129648}.Release|x64.ActiveCfg = Release|x64
-		{F632CCED-570C-4035-8424-DF9675129648}.Release|x64.Build.0 = Release|x64
-		{F632CCED-570C-4035-8424-DF9675129648}.Release|x86.ActiveCfg = Release|Win32
-		{F632CCED-570C-4035-8424-DF9675129648}.Release|x86.Build.0 = Release|Win32
 		{286E0D35-CC7C-4D8B-86AB-DA3A42852628}.Debug|x64.ActiveCfg = Debug|x64
 		{286E0D35-CC7C-4D8B-86AB-DA3A42852628}.Debug|x64.Build.0 = Debug|x64
 		{286E0D35-CC7C-4D8B-86AB-DA3A42852628}.Debug|x86.ActiveCfg = Debug|Win32
