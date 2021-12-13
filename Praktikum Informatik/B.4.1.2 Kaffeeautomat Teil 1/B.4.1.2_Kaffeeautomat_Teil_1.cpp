@@ -23,15 +23,23 @@ int main()
 	const unsigned int ben_zucker			= 3;
 
 	//Preise
-	const double preis_tasse	= 1.0;
-	const double preis_zusatz	= 0.1;
+	const float preis_tasse	= 1.0;
+	const float preis_zusatz	= 0.1;
+	float preis_gesamt = 0;
+	float geldeingabe = 0;
+	float rueckgeld = 0;
 
 	//Auswahl
-	bool milch;
-	bool zucker;
+	bool auswahl_milch;
+	bool auswahl_zucker;
 
 	while (true)
 	{	
+		//Variablen auf 0 setzen
+		preis_gesamt = 0;
+		geldeingabe = 0;
+		rueckgeld = 0;
+
 		//Clearen des User Interfaces
 		system("cls");
 
@@ -64,40 +72,85 @@ int main()
 			break;
 
 		default:
-			break;
+			cout << "Falsche Eingabe!\n";
+			system("pause");
+			continue;
 		}
 		cout << "Sie haben sich f\x81r Auswahl " << produkt << " entschieden.\n";
 
 		//Abfrage Zucker
-		cout << "Möchten Sie Zucker (j/n)?";
+		cout << "M""\x94""chten Sie Zucker (j/n)?\n";
 		if (_getch() == 'j')
 		{
-			zucker = true;
+			auswahl_zucker = true;
 		}
 		else if (_getch() == 'n')
 		{
-			zucker = false;
+			auswahl_zucker = false;
 		}
 		else
 		{
 			cout << "Falsche Eingabe!\n";
+			system("pause");
+			continue;
 		}
 
 		//Abfrage Milch
-		cout << "Möchten Sie Milch (j/n)?";
+		cout << "M""\x94""chten Sie Milch (j/n)?\n";
 		if (_getch() == 'j')
 		{
-			milch = true;
+			auswahl_milch = true;
 		}
 		else if (_getch() == 'n')
 		{
-			milch = false;
+			auswahl_milch = false;
 		}
 		else
 		{
 			cout << "Falsche Eingabe!\n";
+			system("pause");
 			continue;
 		}
+
+		//Tassenpreis draufrechnen
+		if (eingabe == 'k')
+		{
+			preis_gesamt += preis_tasse;
+		}
+		if (eingabe == 'e')
+		{
+			preis_gesamt += preis_tasse;
+		}
+
+		//Preis für Zusatz hinzufügen
+		if (auswahl_milch == true)
+		{
+			preis_gesamt += preis_zusatz;
+		}
+		if (auswahl_zucker == true)
+		{
+			preis_gesamt += preis_zusatz;
+		}
+		
+		//Preis ausgeben
+		cout << "Bitte " << preis_gesamt << " Euro eingeben und ENTER dr""\x81""cken:\n";
+		cin >> geldeingabe;
+		if (geldeingabe >= preis_gesamt)
+		{
+			rueckgeld = geldeingabe - preis_gesamt;
+		}
+		else
+		{
+			cout << "Zu wenig Geld, Bestellung abgebrochen\n";
+			system("pause");
+			continue;
+		}
+
+		cout << "Ihr Getr\x84nk wird zubereitet.....\n"
+				"Bitte " << rueckgeld << " Euro R\x81""ckgeld und das Getr\x84nk entnehmen und eine Taste dr\x81""cken\n";
+		system("pause");
+
+
 	}
 	//Break der Konsolenanwendung
 	system("pause");
