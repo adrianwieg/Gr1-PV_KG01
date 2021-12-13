@@ -30,15 +30,17 @@ int main()
 	float rueckgeld = 0;
 
 	//Auswahl
-	bool auswahl_milch;
-	bool auswahl_zucker;
+	bool auswahl_milch = false;
+	bool auswahl_zucker = false;
 
 	while (true)
 	{	
-		//Variablen auf 0 setzen
+		//Variablen auf 0/false setzen
 		preis_gesamt = 0;
 		geldeingabe = 0;
 		rueckgeld = 0;
+		auswahl_milch = false;
+		auswahl_milch =false;
 
 		//Clearen des User Interfaces
 		system("cls");
@@ -76,82 +78,123 @@ int main()
 			system("pause");
 			continue;
 		}
-		cout << "Sie haben sich f\x81r Auswahl " << produkt << " entschieden.\n";
+		cout << "\nSie haben sich f\x81r Auswahl " << produkt << " entschieden.\n\n";
 
-		//Abfrage Zucker
-		cout << "M""\x94""chten Sie Zucker (j/n)?\n";
-		if (_getch() == 'j')
+		//Run für Nicht-Service-Mode
+		if (eingabe != 's')
 		{
-			auswahl_zucker = true;
-		}
-		else if (_getch() == 'n')
-		{
-			auswahl_zucker = false;
-		}
-		else
-		{
-			cout << "Falsche Eingabe!\n";
+			//Abfrage Zucker
+			cout << "M""\x94""chten Sie Zucker (j/n)?\n";
+			if (_getch() == 'j')
+			{
+				auswahl_zucker = true;
+			}
+			else if (_getch() == 'n')
+			{
+				auswahl_zucker = false;
+			}
+			else
+			{
+				cout << "Falsche Eingabe!\n";
+				system("pause");
+				continue;
+			}
+
+			//Abfrage Milch
+			cout << "M""\x94""chten Sie Milch (j/n)?\n";
+			if (_getch() == 'j')
+			{
+				auswahl_milch = true;
+			}
+			else if (_getch() == 'n')
+			{
+				auswahl_milch = false;
+			}
+			else
+			{
+				cout << "Falsche Eingabe!\n";
+				system("pause");
+				continue;
+			}
+
+			//Tassenpreis draufrechnen
+			if (eingabe == 'k')
+			{
+				preis_gesamt += preis_tasse;
+			}
+			if (eingabe == 'e')
+			{
+				preis_gesamt += preis_tasse;
+			}
+
+			//Preis für Zusatz hinzufügen
+			if (auswahl_milch == true)
+			{
+				preis_gesamt += preis_zusatz;
+			}
+			if (auswahl_zucker == true)
+			{
+				preis_gesamt += preis_zusatz;
+			}
+
+			//Preis ausgeben
+			cout << "Bitte " << preis_gesamt << " Euro eingeben und ENTER dr""\x81""cken:\n";
+			cin >> geldeingabe;
+			if (geldeingabe >= preis_gesamt)
+			{
+				rueckgeld = geldeingabe - preis_gesamt;
+			}
+			else
+			{
+				cout << "Zu wenig Geld, Bestellung abgebrochen\n";
+				system("pause");
+				continue;
+			}
+
+			//Ausgabe Zubereitung
+			cout << "Ihr Getr\x84nk wird zubereitet.....\n"
+				"Bitte " << rueckgeld << " Euro R\x81""ckgeld und das Getr\x84nk entnehmen und eine Taste dr\x81""cken\n";
 			system("pause");
-			continue;
 		}
 
-		//Abfrage Milch
-		cout << "M""\x94""chten Sie Milch (j/n)?\n";
-		if (_getch() == 'j')
-		{
-			auswahl_milch = true;
-		}
-		else if (_getch() == 'n')
-		{
-			auswahl_milch = false;
-		}
-		else
-		{
-			cout << "Falsche Eingabe!\n";
-			system("pause");
-			continue;
-		}
-
-		//Tassenpreis draufrechnen
+		//Vorratsberechnung
 		if (eingabe == 'k')
 		{
-			preis_gesamt += preis_tasse;
+			kaffeebohnen -= 5;
+			wasser -= 125;
 		}
 		if (eingabe == 'e')
 		{
-			preis_gesamt += preis_tasse;
-		}
-
-		//Preis für Zusatz hinzufügen
-		if (auswahl_milch == true)
-		{
-			preis_gesamt += preis_zusatz;
+			espressobohnen -= 5;
+			wasser -= 25;
 		}
 		if (auswahl_zucker == true)
 		{
-			preis_gesamt += preis_zusatz;
+			zucker -= 3;
 		}
-		
-		//Preis ausgeben
-		cout << "Bitte " << preis_gesamt << " Euro eingeben und ENTER dr""\x81""cken:\n";
-		cin >> geldeingabe;
-		if (geldeingabe >= preis_gesamt)
+		if (auswahl_milch == true)
 		{
-			rueckgeld = geldeingabe - preis_gesamt;
+			milch -= 30;
 		}
-		else
+
+		if (eingabe == 's')
 		{
-			cout << "Zu wenig Geld, Bestellung abgebrochen\n";
+			cout << "Service-Interface\n"
+				"----------------------------------------------------------------------\n"
+				"Noch vorhandene Mengen:\n"
+				"Kaffee: " << kaffeebohnen << "\t Milch: " << milch << "\n"
+				"Espresso: " << espressobohnen << "\t Wasser: " << wasser << "\n"
+				"Zucker: " << zucker << "\n"
+				"----------------------------------------------------------------------\n"
+				"Mengen pro Tasse:\n"
+				"Kaffee: 5 g \t Milch: 30 ml\n"
+				"Espresso: 5 g \t Wasser f\x81r Kaffee: 125 ml\n"
+				"Zucker: 3 g \t Wasser f\x81r Espresso: 25 ml\n"
+				"----------------------------------------------------------------------\n";
 			system("pause");
-			continue;
 		}
-
-		cout << "Ihr Getr\x84nk wird zubereitet.....\n"
-				"Bitte " << rueckgeld << " Euro R\x81""ckgeld und das Getr\x84nk entnehmen und eine Taste dr\x81""cken\n";
-		system("pause");
-
-
 	}
+
 	//Break der Konsolenanwendung
 	system("pause");
 	return 0;
