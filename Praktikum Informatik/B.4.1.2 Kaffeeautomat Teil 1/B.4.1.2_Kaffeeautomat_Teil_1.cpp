@@ -40,7 +40,7 @@ int main()
 		geldeingabe = 0;
 		rueckgeld = 0;
 		auswahl_milch = false;
-		auswahl_milch =false;
+		auswahl_zucker = false;
 
 		//Clearen des User Interfaces
 		system("cls");
