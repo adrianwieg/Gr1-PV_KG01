@@ -1,12 +1,47 @@
 #include <iostream>
 #include <conio.h>
 #include <string>
+
 using namespace std;
+
+//Funktion für das User-Login Popup 
+bool user_login(char passwort[], int passwort_groesse)
+{
+	char eingabe[6]{};								//Passwort-Eingabe des Nutzers
+	bool passwort_korrekt = false;					//Passwort_Korrekt Variable auf false initialisieren
+	cout << "Bitte geben Sie das Passwort ein:";	
+
+	for (int i = 0; i < passwort_groesse-1; i++)	//Zählschleife für das zeichenweise Einlesen
+	{
+		eingabe[i] = _getch();
+		cout << "*";
+	}
+
+	for (int i = 0; i < passwort_groesse-1; i++)	//Überprüfung ob das eingegebene Passwort korrekt ist
+	{
+		if (eingabe[i] == passwort[i])
+		{
+			passwort_korrekt = true;
+		}
+		else
+		{
+			passwort_korrekt = false;
+			break;
+		}
+	}
+	cout << "\n";									
+	return passwort_korrekt;						//Rückgabewert
+}
+
 int main()
 {
 	//Variablendeklaration
 	char eingabe;
 	string produkt;
+
+	//Passwort für den Service-Mode
+	char service_passwort[] = "passwd";
+	int passwort_groesse = sizeof(service_passwort) / sizeof(*service_passwort);
 	
 	//Vorratsvariablen
 	unsigned int kaffeebohnen	= 1000;
@@ -23,8 +58,8 @@ int main()
 	const unsigned int ben_zucker			= 3;
 
 	//Preise
-	const float preis_tasse	= 1.0;
-	const float preis_zusatz	= 0.1;
+	const float preis_tasse	= 1.0f;
+	const float preis_zusatz = 0.1f;
 	float preis_gesamt = 0;
 	float geldeingabe = 0;
 	float rueckgeld = 0;
@@ -177,21 +212,30 @@ int main()
 			milch -= 30;
 		}
 
+		//Ausgabe Service-Interface
 		if (eingabe == 's')
 		{
-			cout << "Service-Interface\n"
-				"----------------------------------------------------------------------\n"
-				"Noch vorhandene Mengen:\n"
-				"Kaffee: " << kaffeebohnen << "\t Milch: " << milch << "\n"
-				"Espresso: " << espressobohnen << "\t Wasser: " << wasser << "\n"
-				"Zucker: " << zucker << "\n"
-				"----------------------------------------------------------------------\n"
-				"Mengen pro Tasse:\n"
-				"Kaffee: 5 g \t Milch: 30 ml\n"
-				"Espresso: 5 g \t Wasser f\x81r Kaffee: 125 ml\n"
-				"Zucker: 3 g \t Wasser f\x81r Espresso: 25 ml\n"
-				"----------------------------------------------------------------------\n";
-			system("pause");
+			if (user_login(service_passwort, passwort_groesse) == true)
+			{
+				cout << "Service-Interface\n"
+					"----------------------------------------------------------------------\n"
+					"Noch vorhandene Mengen:\n"
+					"Kaffee: " << kaffeebohnen << "\t Milch: " << milch << "\n"
+					"Espresso: " << espressobohnen << "\t Wasser: " << wasser << "\n"
+					"Zucker: " << zucker << "\n"
+					"----------------------------------------------------------------------\n"
+					"Mengen pro Tasse:\n"
+					"Kaffee: 5 g \t Milch: 30 ml\n"
+					"Espresso: 5 g \t Wasser f\x81r Kaffee: 125 ml\n"
+					"Zucker: 3 g \t Wasser f\x81r Espresso: 25 ml\n"
+					"----------------------------------------------------------------------\n";
+				system("pause");
+			}
+			else
+			{
+				cout << "Falsches Passwort! Zugang zum Service-Interface verweigert!\n";
+				system("pause");
+			}
 		}
 	}
 
