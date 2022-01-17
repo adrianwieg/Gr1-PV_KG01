@@ -3,7 +3,7 @@
 using namespace std;
 
 //Funktion zur Ermitlung des Mittelwerts
-float ermittle_mittelwert(float werte[], int groesse)
+/*float ermittle_mittelwert(float werte[], int groesse)
 {
 	float summe = 0;					//Summe auf 0 initialisieren
 	float mittelwert = 0;				//Mittelwert auf 0 initialisieren
@@ -14,10 +14,10 @@ float ermittle_mittelwert(float werte[], int groesse)
 	}
 	mittelwert = summe / groesse;		//Berechnung des Mittelwerts
 	return mittelwert;					//Rückgabewert
-}
+}*/
 
 //Funktion zur Ermittlung der Varianz
-float ermittle_varianz(float werte[], int groesse)
+/*float ermittle_varianz(float werte[], int groesse)
 {
 	float mittelwert = ermittle_mittelwert(werte, groesse);	//Berechnung des Mittelwerts
 	float zwischensumme = 0;			//Zwischensumme auf 0 initialisieren
@@ -29,10 +29,29 @@ float ermittle_varianz(float werte[], int groesse)
 	}
 	varianz = zwischensumme / (groesse - 1);
 	return varianz;						//Rückgabewert
+}*/
+
+void berechne_mittelwert_varianz(double* werte, int groesse, double* mittelwert, double* varianz)
+{
+	double summe = 0;
+
+	for (int i = 0; i < groesse; i++)	//Berechnung der Summe aller Messwerte
+	{
+		summe += werte[i];
+	}
+
+	*mittelwert = summe / groesse;		//Berechnung des Mittelwerts
+
+	double zwischensumme = 0;
+	for (int i = 0; i < groesse; i++)	//Berechnung des Quadrates aus der Differenz des jeweiligen Messwertes und des Mittelwerts
+	{
+		zwischensumme += pow(werte[i] - *mittelwert, 2);
+	}
+	*varianz = zwischensumme / ((double)groesse - 1);
 }
 
 //Zeilenweise Ausgabe des Arrays
-void ausgabe_array(float werte[], int groesse)
+void ausgabe_array(double *werte, int groesse)
 {
 	cout << "Messwerte [m] \n";			//Ausgabe der Überschrift
 	cout << "-----------------\n";		//Ausgabe der Trennzeile
@@ -52,8 +71,8 @@ int main()
 	cout << "Wie viele Messwerte?\n";
 	cin >> groesse;
 
-	float* messwerte;
-	messwerte = new float[groesse];
+	double* messwerte;
+	messwerte = new double[groesse];
 
 	//Zählschleife zum Einlesen der Messwerte
 	for (int i = 0; groesse > i; i++)
@@ -62,9 +81,16 @@ int main()
 		cin >> messwerte[i];
 	}
 
+	//Oben geschriebene Funktion zur Berechnung des Mittelwerts und der Varianz
+	double mittelwert = 0;
+	double varianz = 0;
+	berechne_mittelwert_varianz(messwerte, groesse, &mittelwert, &varianz);
+
 	//Aushabe der Messwerte
 	ausgabe_array(messwerte, groesse);
 	cout << endl;
 	//Ausgabe der berechneten Werte
-	cout << "Mittelwert = " << ermittle_mittelwert(messwerte, groesse) << "m Varianz = " << ermittle_varianz(messwerte, groesse) << " quadratmeter" << endl;
+	cout << "Mittelwert = " << mittelwert << "m Varianz = " << varianz << " quadratmeter" << endl;
+
+	return 0;
 }
