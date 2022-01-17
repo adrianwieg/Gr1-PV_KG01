@@ -81,6 +81,8 @@ int main()
 		cin >> messwerte[i];
 	}
 
+	//Zusatzaufgabe: Ja das ist möglich. Dies sieht man ja in Zeile 74 und 75. Wir erstellen ein leeres Array, welches während der Laufzeit gefüllt wird. 
+	//Somit kann die Frage mit Ja beantwortet werden. 
 	//Oben geschriebene Funktion zur Berechnung des Mittelwerts und der Varianz
 	double mittelwert = 0;
 	double varianz = 0;
