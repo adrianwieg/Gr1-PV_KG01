@@ -23,6 +23,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "B.4.6_Aufgaben_zu_Kapitel_5
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "B.4.8_Freispeicherverwaltung_mit_dem_Heap", "B.4.8_Freispeicherverwaltung_mit_dem_Heap\B.4.8_Freispeicherverwaltung_mit_dem_Heap.vcxproj", "{2D630A9B-14A7-475A-B9D7-CEF8B317AC42}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "B.4.9.2_Berechnung_von_Kugeloberfläche_und_Volumen", "B.4.9.2_Berechnung_von_Kugeloberfläche_und_Volumen\B.4.9.2_Berechnung_von_Kugeloberfläche_und_Volumen.vcxproj", "{10D0BD6B-2E5F-4BE3-848D-786BD65678EB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -111,6 +113,14 @@ Global
 		{2D630A9B-14A7-475A-B9D7-CEF8B317AC42}.Release|x64.Build.0 = Release|x64
 		{2D630A9B-14A7-475A-B9D7-CEF8B317AC42}.Release|x86.ActiveCfg = Release|Win32
 		{2D630A9B-14A7-475A-B9D7-CEF8B317AC42}.Release|x86.Build.0 = Release|Win32
+		{10D0BD6B-2E5F-4BE3-848D-786BD65678EB}.Debug|x64.ActiveCfg = Debug|x64
+		{10D0BD6B-2E5F-4BE3-848D-786BD65678EB}.Debug|x64.Build.0 = Debug|x64
+		{10D0BD6B-2E5F-4BE3-848D-786BD65678EB}.Debug|x86.ActiveCfg = Debug|Win32
+		{10D0BD6B-2E5F-4BE3-848D-786BD65678EB}.Debug|x86.Build.0 = Debug|Win32
+		{10D0BD6B-2E5F-4BE3-848D-786BD65678EB}.Release|x64.ActiveCfg = Release|x64
+		{10D0BD6B-2E5F-4BE3-848D-786BD65678EB}.Release|x64.Build.0 = Release|x64
+		{10D0BD6B-2E5F-4BE3-848D-786BD65678EB}.Release|x86.ActiveCfg = Release|Win32
+		{10D0BD6B-2E5F-4BE3-848D-786BD65678EB}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
