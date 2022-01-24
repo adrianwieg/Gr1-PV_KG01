@@ -2,8 +2,34 @@
 #include <conio.h>
 #include <string>
 #include <Windows.h>
+#include "kaffeeautomat.h"
 
 using namespace std;
+
+#define Test
+
+//Definition Struct
+struct daten
+{
+	//Vorratsvariablen
+	unsigned int kaffeebohnen = 1000;
+	unsigned int espressobohnen = 1000;
+	unsigned int wasser = 5000;
+	unsigned int milch = 1000;
+	unsigned int zucker = 500;
+
+	//benötigte Mengen
+	const unsigned int ben_kaffeebohnen = 5;
+	const unsigned int ben_wasser_kaffee = 125;
+	const unsigned int ben_wasser_espresso = 25;
+	const unsigned int ben_milch = 30;
+	const unsigned int ben_zucker = 3;
+
+	//Preise
+	const float preis_tasse = 1.0f;
+	const float preis_zusatz = 0.1f;
+
+};
 
 //Main-Funktion
 int main()
@@ -72,7 +98,7 @@ int main()
 
 			//Ausgabe Zubereitung
 			cout << "Ihr Getr\x84nk wird zubereitet.....\n"
-				"Bitte " << rueckgeld << " Euro R\x81""ckgeld und das Getr\x84nk entnehmen und eine Taste dr\x81""cken\n";
+				"Bitte " << rueckgeld << " Euro R\x81 \bckgeld und das Getr\x84nk entnehmen und eine Taste dr\x81 \bcken\n";
 			system("pause");
 		}
 	}
