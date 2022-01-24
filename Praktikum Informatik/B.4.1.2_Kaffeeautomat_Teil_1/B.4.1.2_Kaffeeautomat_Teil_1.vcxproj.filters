@@ -18,5 +18,13 @@
     <ClCompile Include="..\B.4.1.2 Kaffeeautomat Teil 1\B.4.1.2_Kaffeeautomat_Teil_1.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="Funktionen.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Kaffeeautomat.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -141,6 +141,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\B.4.1.2 Kaffeeautomat Teil 1\B.4.1.2_Kaffeeautomat_Teil_1.cpp" />
+    <ClCompile Include="Funktionen.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Kaffeeautomat.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
