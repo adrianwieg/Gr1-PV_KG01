@@ -2,7 +2,6 @@
 #pragma once
 
 //nur wenn Test definiert wurde, tut das Makro etwas
-#define TEST
 #ifdef TEST
 #define TESTAUSGABE(x) x												//Führt einen beliebigen Testcommand aus
 #define PRINTVARIABLE(x) cout << endl << (#x) << "=" << (x) << endl		//Gibt die Variable aus

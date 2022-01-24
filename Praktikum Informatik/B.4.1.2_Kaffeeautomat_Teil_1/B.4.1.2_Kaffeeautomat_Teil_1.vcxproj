@@ -144,7 +144,10 @@
     <ClCompile Include="Funktionen.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Kaffeeautomat.h" />
+    <ClInclude Include="Kaffeeautomat.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</DeploymentContent>
+    </ClInclude>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
