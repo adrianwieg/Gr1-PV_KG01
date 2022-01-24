@@ -33,41 +33,50 @@ bool user_login(char passwort[], int passwort_groesse)
 	return passwort_korrekt;						//Rückgabewert
 }
 
+//Definition Struct
+struct daten 
+{
+	//Vorratsvariablen
+	unsigned int kaffeebohnen = 1000;
+	unsigned int espressobohnen = 1000;
+	unsigned int wasser = 5000;
+	unsigned int milch = 1000;
+	unsigned int zucker = 500;
+
+	//benötigte Mengen
+	const unsigned int ben_kaffeebohnen = 5;
+	const unsigned int ben_wasser_kaffee = 125;
+	const unsigned int ben_wasser_espresso = 25;
+	const unsigned int ben_milch = 30;
+	const unsigned int ben_zucker = 3;
+
+	//Preise
+	const float preis_tasse = 1.0f;
+	const float preis_zusatz = 0.1f;
+		
+};
+
 int main()
 {
+	daten stock;
+
 	//Variablendeklaration
 	char eingabe;
 	string produkt;
-
-	//Passwort für den Service-Mode
-	char service_passwort[] = "passwd";
-	int passwort_groesse = sizeof(service_passwort) / sizeof(*service_passwort);
-	
-	//Vorratsvariablen
-	unsigned int kaffeebohnen	= 1000;
-	unsigned int espressobohnen = 1000;
-	unsigned int wasser			= 5000;
-	unsigned int milch			= 1000;
-	unsigned int zucker			= 500;
-
-	//benötigte Mengen
-	const unsigned int ben_kaffeebohnen		= 5;
-	const unsigned int ben_wasser_kaffee	= 125;
-	const unsigned int ben_wasser_espresso	= 25;
-	const unsigned int ben_milch			= 30;
-	const unsigned int ben_zucker			= 3;
-
-	//Preise
-	const float preis_tasse	= 1.0f;
-	const float preis_zusatz = 0.1f;
-	float preis_gesamt = 0;
-	float geldeingabe = 0;
-	float rueckgeld = 0;
 
 	//Auswahl
 	bool auswahl_milch = false;
 	bool auswahl_zucker = false;
 
+	//Passwort für den Service-Mode
+	char service_passwort[] = "passwd";
+	int passwort_groesse = sizeof(service_passwort) / sizeof(*service_passwort);
+
+	//Geld
+	float preis_gesamt = 0;
+	float geldeingabe = 0;
+	float rueckgeld = 0;
+	
 	while (true)
 	{	
 		//Variablen auf 0/false setzen
@@ -83,8 +92,8 @@ int main()
 		//Textausgabe
 		cout << "Herzlich Willkommen beim Kaffee-Automaten!\n"
 			"Preis pro Tasse:\n"
-			"Kaffee oder Espresso:  " << preis_tasse << " Euro\n"
-			"Milch oder Zucker:     " << preis_zusatz << " Euro\n\n"
+			"Kaffee oder Espresso:  " << stock.preis_tasse << " Euro\n"
+			"Milch oder Zucker:     " << stock.preis_zusatz << " Euro\n\n"
 			"Bitte w\x84hlen Sie aus:\n"
 			"(k) Kaffee\n"
 			"(e) Espresso\n"
@@ -155,21 +164,21 @@ int main()
 			//Tassenpreis draufrechnen
 			if (eingabe == 'k')
 			{
-				preis_gesamt += preis_tasse;
+				preis_gesamt += stock.preis_tasse;
 			}
 			if (eingabe == 'e')
 			{
-				preis_gesamt += preis_tasse;
+				preis_gesamt += stock.preis_tasse;
 			}
 
 			//Preis für Zusatz hinzufügen
 			if (auswahl_milch == true)
 			{
-				preis_gesamt += preis_zusatz;
+				preis_gesamt += stock.preis_zusatz;
 			}
 			if (auswahl_zucker == true)
 			{
-				preis_gesamt += preis_zusatz;
+				preis_gesamt += stock.preis_zusatz;
 			}
 
 			//Preis ausgeben
@@ -195,21 +204,21 @@ int main()
 		//Vorratsberechnung
 		if (eingabe == 'k')
 		{
-			kaffeebohnen -= 5;
-			wasser -= 125;
+			stock.kaffeebohnen -= 5;
+			stock.wasser -= 125;
 		}
 		if (eingabe == 'e')
 		{
-			espressobohnen -= 5;
-			wasser -= 25;
+			stock.espressobohnen -= 5;
+			stock.wasser -= 25;
 		}
 		if (auswahl_zucker == true)
 		{
-			zucker -= 3;
+			stock.zucker -= 3;
 		}
 		if (auswahl_milch == true)
 		{
-			milch -= 30;
+			stock.milch -= 30;
 		}
 
 		//Ausgabe Service-Interface
@@ -220,9 +229,9 @@ int main()
 				cout << "Service-Interface\n"
 					"----------------------------------------------------------------------\n"
 					"Noch vorhandene Mengen:\n"
-					"Kaffee: " << kaffeebohnen << "\t Milch: " << milch << "\n"
-					"Espresso: " << espressobohnen << "\t Wasser: " << wasser << "\n"
-					"Zucker: " << zucker << "\n"
+					"Kaffee: " << stock.kaffeebohnen << "\t Milch: " << stock.milch << "\n"
+					"Espresso: " << stock.espressobohnen << "\t Wasser: " << stock.wasser << "\n"
+					"Zucker: " << stock.zucker << "\n"
 					"----------------------------------------------------------------------\n"
 					"Mengen pro Tasse:\n"
 					"Kaffee: 5 g \t Milch: 30 ml\n"
