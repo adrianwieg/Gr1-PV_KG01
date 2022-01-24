@@ -5,6 +5,19 @@
 
 using namespace std;
 
+//nur wenn Test definiert wurde, tut das Makro etwas
+#define TEST
+#ifdef TEST
+#define TESTAUSGABE(x) x												//Führt einen beliebigen Testcommand aus
+#define PRINTVARIABLE(x) cout << endl << (#x) << "=" << (x) << endl		//Gibt die Variable aus
+#define PRINTSTRING(x) cout << endl << x << endl						//Gibt den String aus
+#else
+#define TESTAUSGABE(x)		//Macht nichts
+#define PRINTVARIABLE(x)	//Macht nichts
+#define PRINTSTRING(x)		//Macht nichts
+#endif
+
+
 //Definition Struct
 struct daten
 {
@@ -34,6 +47,9 @@ bool user_login(char passwort[], int passwort_groesse)
 	char eingabe[6]{};								//Passwort-Eingabe des Nutzers
 	bool passwort_korrekt = false;					//Passwort_Korrekt Variable auf false initialisieren
 	cout << "Bitte geben Sie das Passwort ein:";
+
+	PRINTSTRING("Debug Mode aktiv. Das ist das Passwort:");
+	PRINTVARIABLE(passwort);
 
 	for (int i = 0; i < passwort_groesse - 1; i++)	//Zählschleife für das zeichenweise Einlesen
 	{
@@ -84,7 +100,7 @@ void SI(daten kaffee)
 	else
 	{
 		cout << "Falsches Passwort! Zugang zum Service-Interface verweigert!\n\a";
-		system("pause");
+		system("sleep 5");
 	}
 }
 
@@ -189,6 +205,7 @@ bool UI(bool* pbkaffee, bool* pbmilch, bool* pbzucker, bool* pbespresso, bool* p
 	default:
 		cout << "\n\nBitte Eingabe pr\x81 \bfen!\n\a";
 		system("timeout 5");
+		return false;
 	}
 }
 
@@ -251,6 +268,9 @@ int main()
 	//Variablendeklaration
 	string produkt;
 
+	//Struct definieren
+	daten kaffee;
+
 	//Auswahl
 	bool auswahl_milch = false;
 	bool auswahl_zucker = false;
@@ -267,7 +287,6 @@ int main()
 		//Clearen des User Interfaces
 		system("cls");
 
-		daten kaffee;
 		bool bkaffee = false;
 		bool bespresso = false;
 		bool bmilch = false;
@@ -294,9 +313,19 @@ int main()
 			else
 			{
 				cout << "Zu wenig Geld, Bestellung abgebrochen\n\a";
-				system("pause");
+				system("sleep 5");
 				continue;
 			}
+
+			//Aktualisieren der Mengen
+			mengen_aktualisieren(bkaffee, bmilch, bzucker, bespresso, &kaffee);
+
+			PRINTSTRING("Debug Mode aktiv. Folgende Mengen sind noch vorhanden:");
+			PRINTVARIABLE(kaffee.kaffeebohnen);
+			PRINTVARIABLE(kaffee.espressobohnen);
+			PRINTVARIABLE(kaffee.wasser);
+			PRINTVARIABLE(kaffee.zucker);
+			PRINTVARIABLE(kaffee.milch);
 
 			//Ausgabe Zubereitung
 			cout << "Ihr Getr\x84nk wird zubereitet.....\n"
