@@ -1,40 +1,12 @@
 #include <iostream>
 #include <conio.h>
 #include <string>
+#include <Windows.h>
 
 using namespace std;
 
-//Funktion für das User-Login Popup 
-bool user_login(char passwort[], int passwort_groesse)
-{
-	char eingabe[6]{};								//Passwort-Eingabe des Nutzers
-	bool passwort_korrekt = false;					//Passwort_Korrekt Variable auf false initialisieren
-	cout << "Bitte geben Sie das Passwort ein:";	
-
-	for (int i = 0; i < passwort_groesse-1; i++)	//Zählschleife für das zeichenweise Einlesen
-	{
-		eingabe[i] = _getch();
-		cout << "*";
-	}
-
-	for (int i = 0; i < passwort_groesse-1; i++)	//Überprüfung ob das eingegebene Passwort korrekt ist
-	{
-		if (eingabe[i] == passwort[i])
-		{
-			passwort_korrekt = true;
-		}
-		else
-		{
-			passwort_korrekt = false;
-			break;
-		}
-	}
-	cout << "\n";									
-	return passwort_korrekt;						//Rückgabewert
-}
-
 //Definition Struct
-struct daten 
+struct daten
 {
 	//Vorratsvariablen
 	unsigned int kaffeebohnen = 1000;
@@ -53,136 +25,267 @@ struct daten
 	//Preise
 	const float preis_tasse = 1.0f;
 	const float preis_zusatz = 0.1f;
-		
+
 };
 
-int main()
+//Funktion für das User-Login Popup 
+bool user_login(char passwort[], int passwort_groesse)
 {
-	daten stock;
+	char eingabe[6]{};								//Passwort-Eingabe des Nutzers
+	bool passwort_korrekt = false;					//Passwort_Korrekt Variable auf false initialisieren
+	cout << "Bitte geben Sie das Passwort ein:";
 
+	for (int i = 0; i < passwort_groesse - 1; i++)	//Zählschleife für das zeichenweise Einlesen
+	{
+		eingabe[i] = _getch();
+		cout << "*";
+	}
+
+	for (int i = 0; i < passwort_groesse - 1; i++)	//Überprüfung ob das eingegebene Passwort korrekt ist
+	{
+		if (eingabe[i] == passwort[i])
+		{
+			passwort_korrekt = true;
+		}
+		else
+		{
+			passwort_korrekt = false;
+			break;
+		}
+	}
+	cout << "\n";
+	return passwort_korrekt;						//Rückgabewert
+}
+
+//Funktion zum Service-Interface
+void SI(daten kaffee)
+{
+	//Passwort für den Service-Mode
+	char service_passwort[] = "passwd";
+	int passwort_groesse = sizeof(service_passwort) / sizeof(*service_passwort);
+
+	//Service Interface
+	if (user_login(service_passwort, passwort_groesse))
+	{
+		cout << "Service-Interface\n"
+			"----------------------------------------------------------------------\n"
+			"Noch vorhandene Mengen:\n"
+			"Kaffee: " << kaffee.kaffeebohnen << "\t Milch: " << kaffee.milch << "\n"
+			"Espresso: " << kaffee.espressobohnen << "\t Wasser: " << kaffee.wasser << "\n"
+			"Zucker: " << kaffee.zucker << "\n"
+			"----------------------------------------------------------------------\n"
+			"Mengen pro Tasse:\n"
+			"Kaffee: 5 g \t Milch: 30 ml\n"
+			"Espresso: 5 g \t Wasser f\x81r Kaffee: 125 ml\n"
+			"Zucker: 3 g \t Wasser f\x81r Espresso: 25 ml\n"
+			"----------------------------------------------------------------------\n";
+		system("pause");
+	}
+	else
+	{
+		cout << "Falsches Passwort! Zugang zum Service-Interface verweigert!\n\a";
+		system("pause");
+	}
+}
+
+//Funktion für die Zusätze
+void UI_zusaetze_kaffee(bool beide, bool* pbmilch, bool* pbzucker)
+{
+	//Abfrage Zucker
+	while (true)
+	{
+		cout << "M""\x94""chten Sie Zucker (j/n)?\n";
+		if (_getch() == 'j')
+		{
+			*pbzucker = true;
+			break;
+		}
+		else if (_getch() == 'n')
+		{
+			*pbzucker = false;
+			break;
+		}
+		else
+		{
+			cout << "Falsche Eingabe!\n\a";
+			system("pause");
+			continue;
+		}
+	}
+
+	//Abfrage Milch
+	if (beide)
+	{
+		while (true)
+		{
+			cout << "M""\x94""chten Sie Milch (j/n)?\n";
+			if (_getch() == 'j')
+			{
+				*pbmilch = true;
+				break;
+			}
+			else if (_getch() == 'n')
+			{
+				*pbmilch = false;
+				break;
+			}
+			else
+			{
+				cout << "Falsche Eingabe!\n\a";
+				system("pause");
+				continue;
+			}
+		}
+	}
+}
+
+//Funktion für das User-Interface
+bool UI(bool* pbkaffee, bool* pbmilch, bool* pbzucker, bool* pbespresso, bool* pbservice, daten kaffee)
+{
 	//Variablendeklaration
 	char eingabe;
+
+	//Textausgabe
+	cout << "Herzlich Willkommen beim Kaffee-Automaten!\n"
+		"Preis pro Tasse:\n"
+		"Kaffee oder Espresso:  " << kaffee.preis_tasse << " Euro\n"
+		"Milch oder Zucker:     " << kaffee.preis_zusatz << " Euro\n\n"
+		"Bitte w\x84hlen Sie aus:\n"
+		"(k) Kaffee\n"
+		"(e) Espresso\n"
+		"(s) Service-Mode\n"
+		"(h) Herunterfahren\n";
+
+	//Einlesen der Auswahl
+	eingabe = _getch();
+
+	//Umwandlung der Auswahl- Buchstaben in einen boolean
+	switch (eingabe)
+	{
+	case 'k':
+		*pbkaffee = true;
+		cout << "\nSie haben sich f\x81r Auswahl Kaffee entschieden.\n\n";
+		UI_zusaetze_kaffee(true, pbmilch, pbzucker);
+		return false;
+		break;
+
+	case 'e':
+		*pbespresso = true;
+		cout << "\nSie haben sich f\x81r Auswahl Espresso entschieden.\n\n";
+		UI_zusaetze_kaffee(false, pbmilch, pbzucker);
+		return false;
+		break;
+
+	case 's':
+		*pbservice = true;
+		cout << "\nSie haben sich f\x81r Auswahl Service-Mode entschieden.\n\n";
+		SI(kaffee);
+		return false;
+		break;
+
+	case 'h':
+		return true;
+
+	default:
+		cout << "\n\nBitte Eingabe pr\x81 \bfen!\n\a";
+		system("timeout 5");
+	}
+}
+
+//Funktion zur Preisberechnung
+float preis_berechnen(bool bkaffee, bool bmilch, bool bzucker, bool bespresso, daten kaffee)
+{
+	float preis = 0;
+	//Tassenpreis draufrechnen
+	if (bkaffee)
+	{
+		preis += kaffee.preis_tasse;
+	}
+	if (bespresso)
+	{
+		preis += kaffee.preis_tasse;
+	}
+
+	//Preis für Zusatz hinzufügen
+	if (bmilch)
+	{
+		preis += kaffee.preis_zusatz;
+	}
+	if (bzucker)
+	{
+		preis += kaffee.preis_zusatz;
+	}
+	return preis;
+}
+
+//Funktion zur Aktualisierung der Vorratsvariablen
+void mengen_aktualisieren(bool bkaffee, bool bmilch, bool bzucker, bool bespresso, daten* pkaffee)
+{
+	//Auswahl Kaffee
+	if (bkaffee)
+	{
+		pkaffee->kaffeebohnen -= pkaffee->ben_kaffeebohnen;
+		pkaffee->wasser -= pkaffee->ben_wasser_kaffee;
+	}
+	//Auswahl Espresso
+	if (bespresso)
+	{
+		pkaffee->espressobohnen -= pkaffee->espressobohnen;
+		pkaffee->wasser -= pkaffee->ben_wasser_espresso;
+	}
+	//Auswahl mit Zucker
+	if (bzucker)
+	{
+		pkaffee->zucker -= pkaffee->ben_zucker;
+	}
+	//Auswahl mit Milch
+	if (bmilch)
+	{
+		pkaffee->milch -= pkaffee->ben_milch;
+	}
+}
+
+//Main-Funktion
+int main()
+{
+	//Variablendeklaration
 	string produkt;
 
 	//Auswahl
 	bool auswahl_milch = false;
 	bool auswahl_zucker = false;
 
-	//Passwort für den Service-Mode
-	char service_passwort[] = "passwd";
-	int passwort_groesse = sizeof(service_passwort) / sizeof(*service_passwort);
-
 	//Geld
 	float preis_gesamt = 0;
 	float geldeingabe = 0;
 	float rueckgeld = 0;
 	
-	while (true)
-	{	
-		//Variablen auf 0/false setzen
-		preis_gesamt = 0;
-		geldeingabe = 0;
-		rueckgeld = 0;
-		auswahl_milch = false;
-		auswahl_zucker = false;
+	bool herunterfahren = false;
 
+	while (herunterfahren != true)
+	{	
 		//Clearen des User Interfaces
 		system("cls");
 
-		//Textausgabe
-		cout << "Herzlich Willkommen beim Kaffee-Automaten!\n"
-			"Preis pro Tasse:\n"
-			"Kaffee oder Espresso:  " << stock.preis_tasse << " Euro\n"
-			"Milch oder Zucker:     " << stock.preis_zusatz << " Euro\n\n"
-			"Bitte w\x84hlen Sie aus:\n"
-			"(k) Kaffee\n"
-			"(e) Espresso\n"
-			"(s) Service-Mode\n";
+		daten kaffee;
+		bool bkaffee = false;
+		bool bespresso = false;
+		bool bmilch = false;
+		bool bzucker = false;
+		bool bservice = false;
 
-		//Einlesen der Auswahl
-		eingabe = _getch();
-
-		//Umwandlung der Auswahl- Buchstaben in einen String und Ausgabe
-		switch (eingabe)
+		//Abfrage Herunterfahren ja/nein
+		herunterfahren = UI(&bkaffee, &bmilch, &bzucker, &bespresso, &bservice, kaffee);
+		
+		//Preisberechnung wenn Kaffee oder Espresso ausgewählt wurde
+		if (bkaffee or bespresso)
 		{
-		case 'k':
-			produkt = "Kaffee";
-			break;
+			preis_gesamt = 0;
+			preis_gesamt = preis_berechnen(bkaffee, bmilch, bzucker, bespresso, kaffee);
+			geldeingabe = 0;
+			rueckgeld = 0;
 
-		case 'e':
-			produkt = "Espresso";
-			break;
-
-		case 's':
-			produkt = "Service-Mode";
-			break;
-
-		default:
-			cout << "Falsche Eingabe!\n";
-			system("pause");
-			continue;
-		}
-		cout << "\nSie haben sich f\x81r Auswahl " << produkt << " entschieden.\n\n";
-
-		//Run für Nicht-Service-Mode
-		if (eingabe != 's')
-		{
-			//Abfrage Zucker
-			cout << "M""\x94""chten Sie Zucker (j/n)?\n";
-			if (_getch() == 'j')
-			{
-				auswahl_zucker = true;
-			}
-			else if (_getch() == 'n')
-			{
-				auswahl_zucker = false;
-			}
-			else
-			{
-				cout << "Falsche Eingabe!\n";
-				system("pause");
-				continue;
-			}
-
-			//Abfrage Milch
-			cout << "M""\x94""chten Sie Milch (j/n)?\n";
-			if (_getch() == 'j')
-			{
-				auswahl_milch = true;
-			}
-			else if (_getch() == 'n')
-			{
-				auswahl_milch = false;
-			}
-			else
-			{
-				cout << "Falsche Eingabe!\n";
-				system("pause");
-				continue;
-			}
-
-			//Tassenpreis draufrechnen
-			if (eingabe == 'k')
-			{
-				preis_gesamt += stock.preis_tasse;
-			}
-			if (eingabe == 'e')
-			{
-				preis_gesamt += stock.preis_tasse;
-			}
-
-			//Preis für Zusatz hinzufügen
-			if (auswahl_milch == true)
-			{
-				preis_gesamt += stock.preis_zusatz;
-			}
-			if (auswahl_zucker == true)
-			{
-				preis_gesamt += stock.preis_zusatz;
-			}
-
-			//Preis ausgeben
-			cout << "Bitte " << preis_gesamt << " Euro eingeben und ENTER dr""\x81""cken:\n";
+			cout << "Bitte " << preis_gesamt << " Euro eingeben und ENTER dr\x81 \bcken:\n";
 			cin >> geldeingabe;
 			if (geldeingabe >= preis_gesamt)
 			{
@@ -190,7 +293,7 @@ int main()
 			}
 			else
 			{
-				cout << "Zu wenig Geld, Bestellung abgebrochen\n";
+				cout << "Zu wenig Geld, Bestellung abgebrochen\n\a";
 				system("pause");
 				continue;
 			}
@@ -200,54 +303,8 @@ int main()
 				"Bitte " << rueckgeld << " Euro R\x81""ckgeld und das Getr\x84nk entnehmen und eine Taste dr\x81""cken\n";
 			system("pause");
 		}
-
-		//Vorratsberechnung
-		if (eingabe == 'k')
-		{
-			stock.kaffeebohnen -= 5;
-			stock.wasser -= 125;
-		}
-		if (eingabe == 'e')
-		{
-			stock.espressobohnen -= 5;
-			stock.wasser -= 25;
-		}
-		if (auswahl_zucker == true)
-		{
-			stock.zucker -= 3;
-		}
-		if (auswahl_milch == true)
-		{
-			stock.milch -= 30;
-		}
-
-		//Ausgabe Service-Interface
-		if (eingabe == 's')
-		{
-			if (user_login(service_passwort, passwort_groesse) == true)
-			{
-				cout << "Service-Interface\n"
-					"----------------------------------------------------------------------\n"
-					"Noch vorhandene Mengen:\n"
-					"Kaffee: " << stock.kaffeebohnen << "\t Milch: " << stock.milch << "\n"
-					"Espresso: " << stock.espressobohnen << "\t Wasser: " << stock.wasser << "\n"
-					"Zucker: " << stock.zucker << "\n"
-					"----------------------------------------------------------------------\n"
-					"Mengen pro Tasse:\n"
-					"Kaffee: 5 g \t Milch: 30 ml\n"
-					"Espresso: 5 g \t Wasser f\x81r Kaffee: 125 ml\n"
-					"Zucker: 3 g \t Wasser f\x81r Espresso: 25 ml\n"
-					"----------------------------------------------------------------------\n";
-				system("pause");
-			}
-			else
-			{
-				cout << "Falsches Passwort! Zugang zum Service-Interface verweigert!\n";
-				system("pause");
-			}
-		}
 	}
-
+		
 	//Break der Konsolenanwendung
 	system("pause");
 	return 0;
